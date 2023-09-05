@@ -10,17 +10,13 @@
 [“Russia”, “Denmark”, “Kazan”] → []
 */
 
-
-
-using System.Globalization;
-
-string [] Create_UserArray (int count_el)
+string [] CreateUserArray (int count_el)
 {
     string [] array = new string [count_el];
     for (int i = 0; i <= count_el - 1; i++)
     {
-        Console.WriteLine("Enter the element: ");
-        array[i] = Console.ReadLine();
+        Console.WriteLine($"Enter element {i + 1}: ");
+        array[i] = Console.ReadLine() ?? String.Empty;
     }
     return array;
 }
@@ -31,7 +27,6 @@ string [] FinalArray (string [] defaultarray)
     string [] finalarray = new string [0];
     for (int i = 0; i < defaultarray.Length; i++)
     {
-        int j = 0;
         if (defaultarray[i].Length < 4)
         {
            Array.Resize(ref finalarray, finalarray.Length + 1);
@@ -44,12 +39,9 @@ string [] FinalArray (string [] defaultarray)
 
 Console.WriteLine("Enter the length of your array: ");
 
-int UserCountElements = Convert.ToInt32(Console.ReadLine());
-string [] array = Create_UserArray(UserCountElements);
+int user_count_elements = Convert.ToInt32(Console.ReadLine());
+string [] array = CreateUserArray(user_count_elements);
+string [] result_array = FinalArray(array);
 
 Console.WriteLine($"You array:" + "[" + string.Join(", ", array) + "]");
-
-
-string [] ResultArray = FinalArray(array);
-
-Console.WriteLine($"Final array: " + "[" + string.Join(",", ResultArray) +"]");
+Console.WriteLine($"Final array: " + "[" + string.Join(", ", result_array) +"]");
