@@ -22,15 +22,15 @@ string [] CreateUserArray (int count_el)
 }
 
 
-string [] FinalArray (string [] defaultarray)
+string [] FinalArray (string [] default_array)
 {
     string [] finalarray = new string [0];
-    for (int i = 0; i < defaultarray.Length; i++)
+    for (int i = 0; i < default_array.Length; i++)
     {
-        if (defaultarray[i].Length < 4)
+        if (default_array[i].Length < 4)
         {
            Array.Resize(ref finalarray, finalarray.Length + 1);
-           finalarray[finalarray.Length - 1] = defaultarray[i];
+           finalarray[finalarray.Length - 1] = default_array[i];
         } 
     }
     return finalarray;
