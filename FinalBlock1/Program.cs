@@ -24,16 +24,16 @@ string [] CreateUserArray (int count_el)
 
 string [] FinalArray (string [] default_array)
 {
-    string [] finalarray = new string [0];
+    string [] final_array = new string [0];
     for (int i = 0; i < default_array.Length; i++)
     {
         if (default_array[i].Length < 4)
         {
-           Array.Resize(ref finalarray, finalarray.Length + 1);
-           finalarray[finalarray.Length - 1] = default_array[i];
+           Array.Resize(ref final_array, final_array.Length + 1);
+           final_array[final_array.Length - 1] = default_array[i];
         } 
     }
-    return finalarray;
+    return final_array;
 }
 
 
