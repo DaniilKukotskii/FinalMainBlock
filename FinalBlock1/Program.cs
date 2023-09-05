@@ -12,6 +12,8 @@
 
 
 
+using System.Globalization;
+
 string [] Create_UserArray (int count_el)
 {
     string [] array = new string [count_el];
@@ -24,12 +26,30 @@ string [] Create_UserArray (int count_el)
 }
 
 
+string [] FinalArray (string [] defaultarray)
+{
+    string [] finalarray = new string [0];
+    for (int i = 0; i < defaultarray.Length; i++)
+    {
+        int j = 0;
+        if (defaultarray[i].Length < 4)
+        {
+           Array.Resize(ref finalarray, finalarray.Length + 1);
+           finalarray[finalarray.Length - 1] = defaultarray[i];
+        } 
+    }
+    return finalarray;
+}
 
 
 Console.WriteLine("Enter the length of your array: ");
 
-int usercount = Convert.ToInt32(Console.ReadLine());
-string [] array = Create_UserArray(usercount);
+int UserCountElements = Convert.ToInt32(Console.ReadLine());
+string [] array = Create_UserArray(UserCountElements);
 
-Console.WriteLine($"You array:" + "[" + string.Join(",", array) + "]");
+Console.WriteLine($"You array:" + "[" + string.Join(", ", array) + "]");
 
+
+string [] ResultArray = FinalArray(array);
+
+Console.WriteLine($"Final array: " + "[" + string.Join(",", ResultArray) +"]");
